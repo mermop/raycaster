@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body, #ray-zone {
+                height: 100vh;
+                width: 100vw;
+            }
+            .ray-romano {
+                background-image: url('ray-romano.png');
+                width: 50px;
+                height: 65px;
+                background-size: contain;
+                position: absolute;
+                animation: cast 0.5s;
+                animation-fill-mode:forwards;
+                animation-timing-function: ease-out;
+            }
+            .ray-zone {
+                position: relative;
+            }
+            @keyframes cast {
+                0% {
+                    transform: scale(20);
+                }
+                100% {
+                    transform: scale(0.01);
+                }
+            }
+        </style>
+        <script>
+            window.addEventListener('DOMContentLoaded', init, false);
+
+            function init() {
+                // console.log('init')
+                body = document.body;
+                body.addEventListener('click', e => {
+                    // console.log(e)
+                    castRay(e.x, e.y);
+                });
+            }
+
+            function castRay(x, y) {
+                let ray = document.createElement("div");
+                ray.style.left = (x - 25) + "px";
+                ray.style.top = (y - 32) + "px";
+                ray.classList.add('ray-romano');
+                let rayZone = document.getElementById("ray-zone");
+                rayZone.appendChild(ray);
+                setTimeout(() => {
+                    ray.remove()
+                }, 1000);
+            }
+        </script>
+    </head>
+    <body>
+        <h1>raycaster</h1>
+        <div id="ray-zone">
+        </div>
+    </body>
+</html>
