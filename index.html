@@ -7,6 +7,7 @@
                 height: 100vh;
                 width: 100vw;
             }
+            
             .ray-romano {
                 background-image: url('ray-romano.png');
                 width: 50px;
@@ -17,9 +18,7 @@
                 animation-fill-mode:forwards;
                 animation-timing-function: ease-out;
             }
-            .ray-zone {
-                position: relative;
-            }
+
             @keyframes cast {
                 0% {
                     transform: scale(20);
@@ -33,10 +32,8 @@
             window.addEventListener('DOMContentLoaded', init, false);
 
             function init() {
-                // console.log('init')
                 body = document.body;
                 body.addEventListener('click', e => {
-                    // console.log(e)
                     castRay(e.x, e.y);
                 });
             }
